@@ -23,6 +23,7 @@ def get_statistics(env) -> Dict:
          if cs.total_evs_served > 0]).mean()
     # get transformer overload from env.tr_overload
     total_transformer_overload = np.array(env.tr_overload).sum()
+    transformer_load_profile = np.array(env.tr_load)
 
     tracking_error = 0
     energy_tracking_error = 0
@@ -85,6 +86,7 @@ def get_statistics(env) -> Dict:
              'battery_degradation_calendar': battery_degradation_calendar,
              'battery_degradation_cycling': battery_degradation_cycling,
              'total_reward': env.total_reward,
+             'transformer_lp': transformer_load_profile
              }
 
     if env.eval_mode != "optimal" and env.replay is not None:
