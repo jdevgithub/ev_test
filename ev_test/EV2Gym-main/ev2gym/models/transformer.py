@@ -297,6 +297,15 @@ class Transformer():
         else:
             return 0
 
+     def get_current_power(self) -> float:
+        '''
+        Record power loading
+
+        Returns:
+            - a float value of power
+        '''
+        return self.current_power
+
     def __str__(self) -> str:
 
         return f'  - Transformer {self.id}:  {self.min_power[self.current_step]:.1f} / ' +\
