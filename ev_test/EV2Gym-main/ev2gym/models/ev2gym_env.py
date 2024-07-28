@@ -320,6 +320,9 @@ class EV2Gym(gym.Env):
         self.tr_overload = np.zeros(
             [self.number_of_transformers, self.simulation_length])
 
+        self.tr_load = np.zeros(
+            [self.number_of_transformers, self.simulation_length])
+
         self.tr_inflexible_loads = np.zeros(
             [self.number_of_transformers, self.simulation_length])
 
@@ -530,6 +533,7 @@ class EV2Gym(gym.Env):
             # self.transformer_amps[tr.id, self.current_step] = tr.current_amps
             self.tr_overload[tr.id,
                              self.current_step] = tr.get_how_overloaded()
+            self.tr_load[tr.id, self.current_step] = tr.get_current_power()
             self.tr_inflexible_loads[tr.id,
                                      self.current_step] = tr.inflexible_load[self.current_step]
             self.tr_solar_power[tr.id,
